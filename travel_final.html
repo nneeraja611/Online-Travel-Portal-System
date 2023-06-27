@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* CSS for header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family: 'Sriracha', cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f5f5f5;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #000;
+      padding: 35px 20px;
+    }
+
+    /* CSS for main element */
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 1000px;
+      //background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.sheilakumar.in/wp-content/uploads/2013/03/eiffel-tower-in-paris-1534343966KWQ.jpg");
+	  //background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.mensjournal.com/wp-content/uploads/2018/05/1380-eiffel-tower.jpg?w=900&h=506&crop=1&quality=86&strip=all");
+	  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.adsttc.com/media/images/587c/cbc4/e58e/cea3/7600/087d/large_jpg/eiffel-tower-768501_1920.jpg?1484573627");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .intro h1 {
+      font-family: sans-serif;
+      font-size: 60px;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .intro p {
+      font-size: 20px;
+      color: #d1d1d1;
+      text-transform: uppercase;
+      margin: 20px 0;
+    }
+
+    .intro button {
+      background-color: #5edaf0;
+      color: #000;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+    }
+
+    .achievements {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 80px;
+    }
+
+    .achievements .work {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .achievements .work i {
+      width: fit-content;
+      font-size: 50px;
+      color: #333333;
+      border-radius: 50%;
+      border: 2px solid #333333;
+      padding: 12px;
+    }
+
+    .achievements .work .work-heading {
+      font-size: 20px;
+      color: #333333;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .achievements .work .work-text {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    .about-me {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 80px;
+      border-top: 2px solid #eeeeee;
+    }
+
+    .about-me img {
+      width: 500px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .about-me-text h2 {
+      font-size: 30px;
+      color: #333333;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .about-me-text p {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    /* CSS for footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #302f49;
+      padding: 40px 80px;
+    }
+
+    .footer .copy {
+      color: #fff;
+    }
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .bottom-links .links span {
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration: none;
+      color: #a1a1a1;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav-items">
+      <a href="#"><font size=4>Home</font></a>
+      <a href="http://127.0.0.1:3000"><font size=4>Login/Register</font></a>
+	  <a href="#"><font size=4>Contact Us</font></a>
+      
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Online Travel Portal</h1>
+	  <p> Enjoy Exceptional Booking Experience </p><br><br><br>
+	  
+    
+    
+	
+	
+	
+	<!--<form>
+	<h2>Fill in the details below to proceed further:</h2>
+	<h3>  1. Enter your name: <input type="text" maxlength="15" name="yourName" /></h3><br>
+	<h3>  2. Passport ID: <input type="number" maxlength="5" name="pass_id" /></h3><br>
+	<h3>  3. Phone number: <input type="tel" maxlength="10" name="ph_no" /></h3><br>
+	<h3>  4. Type of Trip you prefer:</h3>
+        <select Name="Trip_type">
+		<option value="-1" selected>Select</option>
+		<option value="Beach">Beach</option>
+		<option value="Eco Tour">Eco Tour</option>
+		<option value="Adventure">Adventure</option>
+		<option value="Medical">Medical</option>
+		</select><br>
+	
+	</form><br><br>-->
+	
+	<form action="index.php" method="POST" >
+
+<table  height="300px" width="300px"  bgcolor="CornflowerBlue" align="center">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>To display the name of the customer based on the type of trip:</b></font></center>
+</td>
+</tr>
+
+<tr>
+<td><b>&emsp;Select the trip type:</b></td>
+<td><select name="type">
+<option value="-1" selected>Select</option>
+<option value="Beach">Beach</option>
+<option value="Eco Tour">Eco Tour</option>
+<option value="Adventure">Adventure</option>
+<option value="Medical">Medical</option>
+</select></td>
+</tr>
+
+<!--<p>Select the trip type:</p>
+<input type="text" name="type" />
+<input type="submit" value="submit" />-->
+
+
+<tr>
+<td>&emsp;<input type="reset"></td>
+<td colspan="2"><input type="submit" value="submit" /></td>
+</tr>
+</table>
+</form>
+	
+	</div><br>
+	
+  </footer>
+</body> 
+
+</html>

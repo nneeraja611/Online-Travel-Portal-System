@@ -1,0 +1,76 @@
+PERFORMING FEW QUERIES ON THE DATABASE:
+
+1.a. Retrieve the names of customers who is going on adventure trip
+Select name from customer where id_passport IN
+(Select passport_id from reservation where tripid IN
+(SELECT trip_id from trip where type="adventure"));
+
+b. Retrieve the names of customers having tripid=12121
+Select name from customer C where EXISTS
+(select * from reservation R where C.id_passport=R.passport_id and R.tripid='12121');
+
+
+2.a. Retrieve the trip_id of trip scheduled on either of the dates 10/01/2023 or 30/12/2022 or both with adventure type
+select trip_id from trip where (date="2023-01-10" and type="Adventure")
+UNION 
+select trip_id from trip where (date="2022-12-30" and type="Adventure");
+
+b. Retrieve the travel ids present in both tables tickets and travel_agency
+select tr_id from tickets
+where EXISTS
+(select T_id from travel_agency);
+
+
+3.a. Get the number of tickets booked in each seat type
+SELECT seat_type, COUNT(ticket_id) from tickets
+group by seat_type
+having COUNT(ticket_id);
+
+b. Retrieve the minimum cost for each room type
+select room_type, min(hotel_cost) from hotel
+group by room_type
+having min(hotel_cost);
+
+
+4.a. Sort the customer table in descending order by name
+SELECT * from customer
+order by name desc;
+
+b. Sort the hotels in ascending order of their costs
+SELECT * from hotel
+order by hotel_cost ASC;
+
+
+5. Stored procedure:
+Retrieve the details of the customers whose age is above 25 by creating a procedure.
+
+DELIMITER &&  
+CREATE PROCEDURE get_age_above_25 ()  
+BEGIN  
+    SELECT * FROM customer WHERE age > 25;
+END &&  
+DELIMITER ; 
+
+CALL get_age_above_25();
+
+
+6. Triggers:
+Create a trigger to stop updating the customer table if new value of the age entered is less than 18 years. 
+
+DELIMITER $$
+CREATE TRIGGER before_update_customer
+BEFORE UPDATE  
+ON customer FOR EACH ROW  
+BEGIN  
+    DECLARE error_msg VARCHAR(255);  
+    SET error_msg = ('Age of the customer cannot be less than 18 years');  
+	IF new.age < 18 THEN  
+    SIGNAL SQLSTATE '45000'   
+    SET MESSAGE_TEXT = error_msg;  
+    END IF;  
+END $$   
+DELIMITER ;
+
+UPDATE customer
+set age=15
+where id_passport=56987;
